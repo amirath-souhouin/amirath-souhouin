@@ -19,3 +19,6 @@ body, html {
   width: 100%;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5)); /* Adds 3D shadow effect */
 }
+#drip-path {
+  transition: d 1s ease-in-out;
+}
