@@ -9,40 +9,29 @@ body, html {
   position: relative;
   overflow: hidden;
   background-color: #020609;
-  height: 600px; /* Match the SVG height */
+  height: 600px;
 }
 
 .drip-banner {
   width: 100%;
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: dripEffect 3s ease-in-out infinite;
+  position: relative;
+  animation: dripEffect 4s ease-in-out infinite;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5)); /* Shadow for 3D effect */
-}
-
-/* Duplicated banners with staggered animations */
-.drip-banner:nth-child(2) {
-  animation-delay: 0.5s;
-  animation-duration: 3.2s;
-}
-.drip-banner:nth-child(3) {
-  animation-delay: 1s;
-  animation-duration: 2.8s;
-}
-.drip-banner:nth-child(4) {
-  animation-delay: 1.5s;
-  animation-duration: 3.5s;
-}
-.drip-banner:nth-child(5) {
-  animation-delay: 2s;
-  animation-duration: 3s;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 
+    100% 80%, 85% 90%, 
+    75% 85%, 65% 90%, 
+    55% 85%, 45% 95%, 
+    35% 85%, 25% 90%, 
+    15% 85%, 5% 95%, 
+    0% 80%
+  );
 }
 
 /* Drip Effect Animation */
 @keyframes dripEffect {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(10px); } /* Adjust as needed for the drip depth */
-  100% { transform: translateY(0); }
+  0% { transform: translateY(0); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 85% 90%, 75% 85%, 65% 90%, 55% 85%, 45% 95%, 35% 85%, 25% 90%, 15% 85%, 5% 95%, 0% 80%); }
+  50% { transform: translateY(10px); clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 80% 90%, 70% 85%, 60% 95%, 50% 85%, 40% 95%, 30% 90%, 20% 85%, 10% 90%, 0% 85%); }
+  100% { transform: translateY(0); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 85% 90%, 75% 85%, 65% 90%, 55% 85%, 45% 95%, 35% 85%, 25% 90%, 15% 85%, 5% 95%, 0% 80%); }
 }
