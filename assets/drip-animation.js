@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Get the path element
-  const dripPath = document.querySelector("#drip-path");
+    // Ensure that the element with ID 'drip-path' exists
+  var s = Snap("#visual");
+  var dripPath = s.select("#drip-path");
+
 
   // Convert the path to cubic commands to access each point
   let pathData = dripPath.getAttribute("d").split(" ");
