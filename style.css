@@ -9,14 +9,13 @@ body, html {
   position: relative;
   overflow: hidden;
   background-color: #020609;
-  height: 600px;
+  height: 600px; /* Match the SVG height */
 }
 
 .drip-banner {
   width: 100%;
   display: block;
   position: relative;
-  animation: dripEffect 4s ease-in-out infinite;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5)); /* Shadow for 3D effect */
   clip-path: polygon(
     0% 0%, 100% 0%, 
@@ -27,11 +26,31 @@ body, html {
     15% 85%, 5% 95%, 
     0% 80%
   );
+  animation: bottomDrip 5s ease-in-out infinite;
 }
 
-/* Drip Effect Animation */
-@keyframes dripEffect {
-  0% { transform: translateY(0); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 85% 90%, 75% 85%, 65% 90%, 55% 85%, 45% 95%, 35% 85%, 25% 90%, 15% 85%, 5% 95%, 0% 80%); }
-  50% { transform: translateY(10px); clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 80% 90%, 70% 85%, 60% 95%, 50% 85%, 40% 95%, 30% 90%, 20% 85%, 10% 90%, 0% 85%); }
-  100% { transform: translateY(0); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 85% 90%, 75% 85%, 65% 90%, 55% 85%, 45% 95%, 35% 85%, 25% 90%, 15% 85%, 5% 95%, 0% 80%); }
+/* Keyframes for stretching only the bottom part of the SVG */
+@keyframes bottomDrip {
+  0%, 100% { 
+    clip-path: polygon(
+      0% 0%, 100% 0%, 
+      100% 80%, 85% 90%, 
+      75% 85%, 65% 90%, 
+      55% 85%, 45% 95%, 
+      35% 85%, 25% 90%, 
+      15% 85%, 5% 95%, 
+      0% 80%
+    ); 
+  }
+  50% { 
+    clip-path: polygon(
+      0% 0%, 100% 0%, 
+      100% 85%, 85% 95%, 
+      75% 90%, 65% 95%, 
+      55% 90%, 45% 100%, 
+      35% 90%, 25% 95%, 
+      15% 90%, 5% 100%, 
+      0% 85%
+    );
+  }
 }
