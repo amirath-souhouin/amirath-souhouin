@@ -37,3 +37,6 @@
     border-color: white;
   }
 }
+#drip-path {
+  transition: d 1s ease-in-out;
+}
