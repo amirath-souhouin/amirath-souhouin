@@ -4,39 +4,27 @@
   align-items: center;
   height: 100px;
   padding: 0 20px;
-  background-color:bisque; /* Adjust as needed */
+  background-color: #020609;
 }
 
+/* Typing effect styles */
 .typing {
   font-family: 'Courier New', Courier, monospace;
   color: white;
   font-size: 24px;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid white; /* Cursor effect */
-  width: 0; /* Start hidden */
-  animation: typing 4s steps(30, end), blink 0.5s step-end infinite;
+  border-right: 2px solid white; /* Cursor effect */
+  display: inline-block; /* Ensures cursor is close to text */
 }
 
-/* Typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%; /* Adjust based on the text length */
-  }
-}
-
-/* Blinking cursor effect */
+/* Blinking cursor animation */
 @keyframes blink {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: white;
-  }
+  0% { border-color: white; }
+  50% { border-color: transparent; }
+  100% { border-color: white; }
 }
-#drip-path {
-  transition: d 2s ease-in-out;
+
+.typing {
+  animation: blink 1s step-end infinite;
 }
