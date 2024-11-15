@@ -4,7 +4,7 @@
   align-items: center;
   height: 100px;
   padding: 0 20px;
-  background-color: #020609; /* Adjust as needed */
+  background-color:bisque; /* Adjust as needed */
 }
 
 .typing {
@@ -38,5 +38,5 @@
   }
 }
 #drip-path {
-  transition: d 1s ease-in-out;
+  transition: d 2s ease-in-out;
 }
