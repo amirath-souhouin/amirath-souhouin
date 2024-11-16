@@ -1,30 +1,174 @@
 /* Header Styling */
+body {
+margin: 0;
+background-color:F3F3E0;
+}
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
-  padding: 0 20px;
-  background-color: #020609;
+  padding: 0 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10; /* Ensure it's above other elements */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+#header {
+	width:100%;
+	background-color: aliceblue;
+	box-shadow: rgba(88, 119, 125, 0.384) 0px 10px 10px -10px; /*shadow effect nav bar*/
+}
+/* Blinking effect curly braces*/
+/* Container to hold braces and typing effect together */
+.braces-container {
+  display: inline-flex;
+  align-items: center;
+ gap:5px;
+}
+.flicker-brace {
+  font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+  color:rgb(48, 140, 215);
+  font-size: 35px;
+  transition: opacity 0.2s ease-in-out;
+  display: inline-block; /* Ensures they stay inline with the text */
+  margin: 0 5px; /* Removes any default margin */
+  padding: 0; /* Removes any default padding */
+  line-height: 1; /* Ensures the braces are vertically aligned with the text */
 }
 
 /* Typing effect styles */
 .typing {
   font-family: 'Courier New', Courier, monospace;
-  color: white;
+  color: rgb(88, 88, 88);
   font-size: 24px;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 2px solid white; /* Cursor effect */
+  border-right: 2px solid rgb(88, 88, 88); /* Cursor effect */
   display: inline-block; /* Ensures cursor is close to text */
+	animation: blink 1s step-end infinite;
 }
 
 /* Blinking cursor animation */
 @keyframes blink {
-  0% { border-color: white; }
+  0% { border-color: rgb(88, 88, 88); }
   50% { border-color: transparent; }
-  100% { border-color: white; }
+  100% { border-color:  rgb(88, 88, 88); }
 }
 
 .typing {
   animation: blink 1s step-end infinite;
+	line-height: 1
+}
+
+/*Navigation menu CSS*/
+
+/* Navigation menu styling */
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.menu li {
+  margin: 0 20px; /* Space between menu items */
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  font-family: Hack, monospace; /* Applying the font style */
+  font-size: 24px;
+  font-weight: 600;
+  color: #ccc; /* Default color */
+  text-transform: uppercase; /* Capitalize the text */
+  position: relative;
+  transition: all 1s ease-in-out; /* Smooth transition for hover effects */
+
+  /* Overlay effect for hover */
+  &::before {
+    content: attr(data-item); /* Uses the `data-item` attribute */
+    color: #2F57DE; /* Hover effect color */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 1s ease-in-out; /* Smooth width transition */
+  }
+
+  &:hover::before {
+    width: 100%; /* Expands on hover */
+  }
+}
+
+
+/*Two column layout*/
+/* Two-column layout */
+.main-container {
+  margin-top: 100px; /* Push content below fixed header */
+  display: flex;
+  flex-direction: column;
+}
+/* Default Two-Column Layout for Larger Screens */
+.two-column-layout {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping by default */
+  min-height: calc(100vh - 100px); /* Ensure it fills the viewport minus the header */
+}
+
+.left-column {
+  position: fixed;
+  top: 100px; /* To avoid overlapping the header */
+  width: 25%; /* Fixed width for the left column */
+  height: calc(100vh - 100px); /* Full height minus the header */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling within the left column */
+}
+
+.right-column {
+  margin-left: 30%; /* Start where the left column ends */
+  flex-grow: 1; /* Take up remaining space */
+  overflow-y: auto; /* Allow scrolling */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Responsive Stacking for Smaller Screens */
+@media (max-width: 767px) {
+  .two-column-layout {
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .left-column {
+    position: static; /* Reset position to allow stacking */
+    width: 100%; /* Full width for smaller screens */
+    height: auto; /* Adjust height dynamically */
+    border-right: none; /* Remove separator for vertical stacking */
+    border-bottom: 1px solid #ccc; /* Optional separator for vertical layout */
+  }
+
+  .right-column {
+    margin-left: 0; /* Reset margin for stacking */
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: #cccccc80;
+  color: rgba(5, 5, 5, 0.477);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;
 }
