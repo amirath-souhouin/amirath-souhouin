@@ -8,7 +8,8 @@ background-color:F3F3E0;
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  padding: 0 15px;
+  padding: 0 5px;
+	margin-right: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -125,23 +126,28 @@ background-color:F3F3E0;
   flex-wrap: nowrap; /* Prevent wrapping by default */
   min-height: calc(100vh - 100px); /* Ensure it fills the viewport minus the header */
 }
-
 .left-column {
   position: fixed;
   top: 100px; /* To avoid overlapping the header */
-  width: 25%; /* Fixed width for the left column */
-  height: calc(100vh - 100px); /* Full height minus the header */
+  left: 0;
+  width: 25%; /* Fixed width */
+  height: calc(100vh - 100px); /* Full height minus header */
   padding: 20px;
-  overflow-y: auto; /* Enable scrolling within the left column */
+  box-sizing: border-box; /* Include padding in width calculation */
+  overflow-y: auto; /* Enable scrolling */
+  z-index: 1; /* Ensure it stays on top */
 }
 
+
 .right-column {
-  margin-left: 30%; /* Start where the left column ends */
+  margin-left: 25%; /* Start where the left column ends */
   flex-grow: 1; /* Take up remaining space */
-  overflow-y: auto; /* Allow scrolling */
   padding: 20px;
-  background-color: #ffffff;
+  overflow-y: auto; /* Allow scrolling */
+  box-sizing: border-box; /* Include padding in width calculation */
+  z-index: 0; /* Ensure it stays below the fixed left column */
 }
+
 
 /* Responsive Stacking for Smaller Screens */
 @media (max-width: 767px) {
@@ -171,4 +177,131 @@ background-color:F3F3E0;
   padding: 10px 0;
   width: 100%;
   margin-top: auto;
+}
+
+/*Profile pic*/
+/* Container for the profile picture */
+.profile-pic-container {
+  display: flex;
+  justify-content: center; /* Center the image in the container */
+  align-items: center;
+  margin: 20px; /* Add space between the image and text */
+}
+
+/* Style for the profile picture */
+.profile-pic {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Make it square to achieve a perfect circle */
+  border-radius: 50%; /* Makes the image circular */
+  overflow: hidden; /* Ensures the image stays within the circular frame */
+  border: 4px solid #d0c1b685; /* Add a semi-transparent border */
+  object-fit: cover; /* Ensures the image scales properly */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for a nice effect */
+  opacity: 0.5; /* Slight transparency for the image */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the profile picture */
+.profile-pic:hover {
+  opacity: 1; /* Full opacity on hover */
+  transform: scale(1.2); /* Slight zoom-in effect */
+}
+
+@media (max-width: 767px) {
+  .profile-pic {
+    width: 100px; /* Smaller size for mobile */
+    height: 100px;
+  }
+}
+
+/* Adjust the alignment and styling for the text below the profile picture */
+.left-column h2, .left-column h3, .left-column h4 {
+  text-align: center; /* Center-align the text */
+  margin: 10px 0; /* Add some space between the picture and text */
+  font-family:'Courier New', Courier, monospace; /* Cohesive font */
+  color: #b2b4b8; /* Match the color to the website's theme */
+}
+
+/* Add specific styles for the heading levels */
+.left-column h2 {
+  font-size: 20px; /* Larger font size for h2 */
+  font-weight: bold;
+  margin-top: 30px; /* Space between the image and h2 */
+}
+
+.left-column h3 {
+  font-size: 15px; /* Smaller font size for h3 */
+  font-weight: normal;
+  margin-top: 20px; /* Space between h2 and h3 */
+  color: #555555; /* Softer color for subheading */
+}
+.left-column h4 {
+  font-size: 12px; /* Smaller font size for h3 */
+  font-weight: normal;
+	margin-bottom: 30px;
+  margin-top: 5px; /* Space between h2 and h3 */
+  color: #555555; /* Softer color for subheading */
+}
+/* Parent container for location and links */
+.contact-info {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Align all items to the left */
+  margin-left: 100px; /* Slight left margin for the entire block */
+  gap: 20px; /* Space between location and links */
+}
+
+/* Location Section */
+.location {
+  display: flex;
+  align-items: center; /* Align icon and text vertically */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: #555555; /* Matches the site theme */
+  gap: 8px; /* Space between icon and text */
+	margin-left: -10px;
+	margin-bottom: 8px;
+	margin-right: 100px;
+}
+
+/* Links Section */
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align links to the left */
+  gap: 15px; /* Space between links */
+	margin-left:-10px;
+	margin-right: 100px;
+}
+
+/* Ensuring uniform icon alignment */
+.links a, .location {
+  display: flex;
+  align-items: center; /* Ensures icons and text are vertically aligned */
+  gap: 10px; /* Space between icon and text */
+}
+
+/* Uniform icon size and alignment */
+.links i, .location i {
+  width: 25px; /* Ensure all icons have the same width */
+  text-align: left; /* Left-align icons */
+  font-size: 18px; /* Icon size */
+  color: #888888; /* Subtle color for icons */
+  transition: color 0.3s;
+}
+
+.links a:hover i, .location i:hover {
+  color: #1E3A8A; /* Darker icon color on hover */
+}
+
+.links a {
+  text-decoration: none;
+  color: #888888; /* Matches the site theme */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #1E3A8A; /* Darker blue on hover */
 }
